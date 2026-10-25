@@ -1,0 +1,109 @@
+% Ampliación original a partir de 46 diapositivas de fractura, ULE.
+% Datos de ejercicios hipotéticos; no se reproducen figuras docentes.
+\chapter{Fractura: ampliación basada en las diapositivas del profesor}
+\label{ch:fractura-clase}
+\objetivos{Entender clivaje, transición dúctil--frágil, Inglis y Griffith; aplicar los campos de punta y seleccionar factores geométricos para defectos, placas y probetas; comprobar unidades y validez antes de emitir conclusiones.}
+
+\section{Mapa del capítulo docente}
+Las diapositivas 4--15 presentan fractura, fallo histórico, mecanismos y transición térmica; 17--25 introducen cohesión, concentración y Griffith; 27--32 tratan los modos y la relación $K_I$--$G_c$; 33--36 recogen geometrías; 37--43 abordan tenacidades, diseño e inspección. Esta ampliación complementa el capítulo~\ref{ch:03} y el formulario; el cuaderno contiene ejercicios nuevos que reproducen los métodos, no los enunciados.
+
+\section{Micromecanismos y temperatura}
+En rotura dúctil metálica se identifican nucleación, crecimiento y coalescencia de microcavidades, con deformación plástica. El clivaje frágil transgranular puede seguir planos cristalográficos; la fractura intergranular puede estar vinculada a precipitación de fases frágiles, hidrógeno, corrosión, degradación ambiental o cavitación. La superficie de fractura ayuda a diagnosticar, pero no determina el mecanismo sin información de servicio.
+
+Los casos docentes de buques Liberty y la lanzadera Challenger ilustran cómo interactúan material, temperatura, geometría y decisiones de operación. Son fenómenos históricos multicausales: no convertir una explicación simplificada de una diapositiva en diagnóstico exclusivo de un accidente. La transición dúctil--frágil se estudia mediante ensayos Charpy/Izod, energía absorbida y temperatura. Su localización depende de método, probeta, velocidad, orientación y criterio. Muchos aceros BCC son sensibles a la temperatura; no se afirma por ello que todo material FCC sea inmune a cualquier rotura frágil.
+
+\section{Tensión de cohesión y defectos}
+La separación de enlaces atómicos da una resistencia \emph{teórica} del orden de $E/10$ a $E/20$ para ciertos modelos, o una escala elemental $E/(2\pi)$. Las diapositivas comparan con resistencias experimentales que pueden ser mucho menores por defectos y mecanismos microestructurales. Estas escalas no son valores característicos certificados de una aleación.
+
+Para una elipse central en placa infinita sometida a tracción perpendicular, si $a_e$ es \emph{semieje mayor}, $b_e$ semieje menor y $\rho=b_e^2/a_e$ el radio de punta, el modelo clásico de Inglis establece:
+\begin{equation}
+K_t=1+\frac{2a_e}{b_e}=1+2\sqrt{\frac{a_e}{\rho}}.
+\label{eq:clase-inglis}
+\end{equation}
+La diapositiva 20 escribe en el radical una longitud $2a$ dibujada como longitud \emph{total}, mientras que esta definición clásica usa el semieje $a_e$. La discrepancia de convención afecta al factor $\sqrt2$: \emph{no identificar ambas expresiones automáticamente}. En un ejercicio con fórmula prescrita se deben explicitar las convenciones y, si son incompatibles, dejar constancia. Una grieta de punta aguda se estudia mejor con $K_I$ que con una tensión máxima elástica infinita.
+
+\section{Derivación del criterio energético de Griffith}
+Una grieta central pasante de longitud $2a$ en placa elástica ancha de espesor $B$ libera, en la idealización considerada, energía potencial
+\[
+\Delta\Pi=-\frac{\pi a^2 B\sigma^2}{E'},\qquad
+E'=\begin{cases}E&\text{tensión plana},\\ E/(1-\nu^2)&\text{deformación plana}.\end{cases}
+\]
+Crear dos superficies de área $2aB$ cada una cuesta $4aB\gamma_s$, con energía superficial $\gamma_s$ en $\mathrm{J/m^2}$. La condición de equilibrio de la energía total da:
+\begin{equation}
+-2\frac{\pi aB\sigma_c^2}{E'}+4B\gamma_s=0
+\quad\Longrightarrow\quad
+\sigma_c=\sqrt{\frac{2E'\gamma_s}{\pi a}}.
+\label{eq:clase-griffith}
+\end{equation}
+La expresión con $E$ de la diapositiva 25 corresponde a tensión plana. En materiales con disipación, la resistencia a propagación no se reduce necesariamente a dos energías de superficie libres. Para MFEL isotrópica:
+\[
+G=\frac{K_I^2}{E'},\qquad
+G_c=\frac{K_{\mathrm{mat}}^2}{E'},\qquad
+[G]=\mathrm{J/m^2},\quad[K]=\mathrm{MPa}\sqrt{\mathrm m}.
+\]
+La elección de $K_{\mathrm{mat}}$ depende de estado de esfuerzos, espesor y validez del ensayo.
+
+\section{Campo del modo I y su alcance}
+Con eje $x$ sobre la grieta, $y$ perpendicular y polar $(r,\theta)$ desde la punta, las tensiones dominantes en MFEL son:
+\begin{align}
+\sigma_{xx}&=\frac{K_I}{\sqrt{2\pi r}}\cos\frac{\theta}{2}
+\left(1-\sin\frac{\theta}{2}\sin\frac{3\theta}{2}\right),\\
+\sigma_{yy}&=\frac{K_I}{\sqrt{2\pi r}}\cos\frac{\theta}{2}
+\left(1+\sin\frac{\theta}{2}\sin\frac{3\theta}{2}\right),\\
+\tau_{xy}&=\frac{K_I}{\sqrt{2\pi r}}\sin\frac{\theta}{2}
+\cos\frac{\theta}{2}\cos\frac{3\theta}{2}.
+\end{align}
+Sobre el eje frontal $\theta=0$, $\sigma_{xx}=\sigma_{yy}=K_I/\sqrt{2\pi r}$ y $\tau_{xy}=0$. Los signos y nombres de componentes dependen de cómo se dibujen ejes y ángulos; la diapositiva 29 no debe mezclarse con otra convención sin comprobarlos. La singularidad solo describe un término asintótico fuera de la zona plástica y a distancia pequeña frente a dimensiones de la pieza; no predice tensiones infinitas reales.
+
+\section{Deformación plana y criterio de validez}
+En tensión plana $\sigma_z=0$. En deformación plana isótropa lineal, $\varepsilon_z=0$ y $\sigma_z=\nu(\sigma_x+\sigma_y)$. Un cribado de dimensiones para una tenacidad de deformación plana es:
+\begin{equation}
+B,\ a,\ W-a\gtrsim2.5\left(\frac{K_{IC}}{\sigma_y}\right)^2.
+\label{eq:clase-validez}
+\end{equation}
+La diapositiva 31 presenta solo la condición sobre $B$. Esta no demuestra por sí sola una medición válida de $K_{IC}$: faltan longitud de grieta, ligamento, cargas, geometría de probeta y otros criterios normalizados. No se equiparan indiscriminadamente $K_c$ aparente de una chapa delgada y $K_{IC}$ válido de probeta gruesa.
+
+\section{Factores de intensidad de las geometrías del profesor}
+Las diapositivas 33--36 emplean $C$ como nombre alternativo de factor geométrico $Y$ \emph{en las expresiones $K_I=C\sigma\sqrt{\pi a}$}. Se diferencia de las funciones adimensionales $f$ de probetas CT o SENB, que normalizan la \emph{carga} según su propia geometría.
+
+Para grieta \emph{central} con longitud total $2a$ en placa de ancho completo $W$, una aproximación de anchura finita es:
+\begin{equation}
+Y_{\mathrm c}=\sqrt{\sec\left(\frac{\pi a}{W}\right)}
+\quad(0<2a/W<1).
+\label{eq:clase-central}
+\end{equation}
+La diapositiva 33 incluye asimismo un ajuste polinómico y una aproximación denominada Dixon. Son expresiones alternativas y no se deben intercambiar fuera del dominio de calibración. Al tender $a/W\to0$, $Y_{\mathrm c}\to1$. La tensión nominal debe definirse igual que en la solución.
+
+Para grieta \emph{simple de borde} de longitud $a$ y razón $x=a/W$, el ajuste escrito en la diapositiva 33 es:
+\begin{equation}
+Y_{\mathrm b}(x)=1.12-0.231x+10.55x^2-21.72x^3+30.39x^4,
+\qquad 0\le x\lesssim0.6.
+\label{eq:clase-borde}
+\end{equation}
+El valor $1.12$ es el límite de grieta corta, no una corrección fija para grietas largas. Las dos grietas de borde opuestas requieren el factor distinto de la diapositiva 34, que depende del ligamento remanente.
+
+Una \emph{grieta circular interna} idealizada (circular en su plano, no agujero redondo) tiene $K_I=(2/\pi)\sigma\sqrt{\pi a}$ con $a$ radio. La grieta elíptica interna depende del punto del frente y de la proporción entre ejes; no asignar $Y=1$ sin justificarlo. Tampoco confundir $K_t$ del agujero redondo de la diapositiva 21 con intensidad de grieta.
+
+Una probeta compacta CT utiliza una normalización específica:
+\[
+K_I=\frac{P}{B\sqrt W}f(a/W),\quad
+f(x)=\frac{(2+x)(0.886+4.64x-13.32x^2+14.72x^3-5.60x^4)}
+{(1-x)^{3/2}}.
+\]
+La fórmula se aplica a su geometría y rango de calibración; no basta introducir en ella la carga de una chapa. La probeta de flexión SENB exige el vano y el factor de la figura de la diapositiva 35; el doble voladizo DCB se relaciona con rigidez de brazos, carga, grieta y estado plano (diapositiva 36). Para ambos se explican y se fijan primero los significados de $P,B,W,a,S,h$ del dibujo; no se copia el coeficiente de CT por analogía.
+
+\section{Magnitudes de diseño, detectar y mantener}
+Para $Y$ \emph{constante}, en una grieta central o de borde con $a$ definido coherentemente:
+\begin{equation}
+\sigma_{\mathrm{adm}}=\frac{K_{\mathrm{mat}}}{Y\sqrt{\pi a}},
+\qquad a_c=\frac1\pi\left(\frac{K_{\mathrm{mat}}}{Y\sigma_{\max}}\right)^2.
+\label{eq:clase-disenyo}
+\end{equation}
+Si $Y=Y(a/W)$, el tamaño crítico exige resolver la ecuación implícita; la longitud total de grieta central será $2a_c$. La diapositiva 40 contiene un rótulo dimensional inconsistente: $K_{IC}$ tiene unidad $\mathrm{MPa}\sqrt{\mathrm m}$, no $\mathrm{MPa\,m^{-2}}$; $G_c$ y $\gamma_s$ se expresan en $\mathrm{J/m^2}$; $Y$ y $K_t$ son adimensionales.
+
+Un plan tolerante al daño considera solicitación adversa, tamaño crítico, crecimiento por fatiga y capacidad real de END; un equipo nominalmente capaz de ver un tamaño no demuestra detección del cien por cien. Las inspecciones son periódicas por riesgo y datos de crecimiento, y el cálculo académico no es instrucción de aeronavegabilidad.
+
+\repaso{¿Por qué un $K_t$ conocido no sustituye a $Y$?}{$K_t$ compara máxima tensión elástica y tensión nominal de una entalla; $Y$ corrige la intensidad del campo singular de una grieta. La igualdad de dimensiones no implica igualdad de modelos.}
+\repaso{Una grieta central mide $8\,\mathrm{mm}$ de extremo a extremo. ¿Qué se utiliza en $K_I=Y\sigma\sqrt{\pi a}$?}{Se usa $a=4\,\mathrm{mm}=0.004\,\mathrm m$ si el factor corresponde a longitud total $2a$; otra geometría exige redefinir el parámetro.}
+\resumen{El procedimiento completo es: geometría y convención de longitudes, solicitación y $Y$, cálculo de $K_I$, comparación con resistencia aplicable, validez de MFEL, unidades, interpretación y límite de la conclusión.}
+\fuentes{Pablo Rodríguez González, \textit{Mecánica de la fractura}, presentación docente ULE de 46 diapositivas facilitada para esta revisión; páginas 4--15, 19--25, 27--36, 37--43. Fundamentos contrastados: Roylance, \textit{Introduction to Fracture Mechanics} \cite{MIT-FRAC}. Se distingue el texto visible de la presentación de las correcciones de convención y advertencias inferidas.}

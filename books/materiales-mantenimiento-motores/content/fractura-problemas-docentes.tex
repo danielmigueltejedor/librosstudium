@@ -1,0 +1,100 @@
+
+\chapter{Problemas resueltos para mecánica de la fractura}
+\label{ch:prb-frac-clase}
+Los datos de este capítulo son originales e hipotéticos, y reproducen procedimientos de las diapositivas sin copiar los ejercicios del profesor. Las longitudes de grieta se expresan en metros cuando se utiliza la tenacidad en unidades de \(\mathrm{MPa}\sqrt{\mathrm m}\).
+
+\section{PF01. Griffith y cohesión ideal}
+\apartado{Enunciado}{Para $E=70\,\mathrm{GPa}$, $\gamma_s=1\,\mathrm{J/m^2}$ y grieta central de longitud total $2\,\mathrm{mm}$, hallar la tensión de fractura de Griffith en tensión plana y compararla con $E/10$.}
+\apartado{Modelo}{Placa muy ancha, isotrópica, elasticidad lineal, sin otras disipaciones; $a=0.001\,\mathrm m$ es semilongitud.}
+\apartado{Solución}{Del balance energético:
+\[
+\sigma_c=\sqrt{\frac{2E\gamma_s}{\pi a}}
+=\sqrt{\frac{2(70\,10^9)(1)}{\pi(0.001)}}=6.676\,\mathrm{MPa}.
+\]
+La escala teórica $E/10=7000\,\mathrm{MPa}$ es muy superior. La resistencia observada de un componente depende de defectos; no se considera $E/10$ una tensión admisible de diseño.}
+\apartado{Comprobación}{Las unidades bajo la raíz son $\mathrm{Pa^2}$. Si $a$ se duplica, el resultado se divide por $\sqrt2$.}
+
+\section{PF02. Energía de fractura a partir de la tenacidad}
+\apartado{Enunciado}{Con $K_{\mathrm{mat}}=30\,\mathrm{MPa}\sqrt{\mathrm m}$, $E=70\,\mathrm{GPa}$ y $\nu=0.33$, calcular $G_c$ en tensión plana y en deformación plana suponiendo idéntico $K$.}
+\apartado{Solución}{Convertir $E=70\,10^9\,\mathrm{Pa}$ y $K=30\,10^6\,\mathrm{Pa}\sqrt{\mathrm m}$. En tensión plana:
+\[
+G_{c,\mathrm{tp}}=\frac{(30\,10^6)^2}{70\,10^9}
+=12857.14\,\mathrm{J/m^2}.
+\]
+En deformación plana:
+\[
+G_{c,\mathrm{dp}}=\frac{(30\,10^6)^2(1-0.33^2)}{70\,10^9}
+=11457.0\,\mathrm{J/m^2}.
+\]
+La comparación mantiene artificialmente el mismo $K$; no afirma que la tenacidad aparente de cualquier espesor sea la misma.}
+\apartado{Comprobación}{$K^2/E$ equivale a $\mathrm{Pa\,m=J/m^2}$.}
+
+\section{PF03. Grieta central de ancho finito y raíz crítica}
+\apartado{Enunciado}{Placa de anchura total $W=50\,\mathrm{mm}$, grieta central total $2a=10\,\mathrm{mm}$, tensión remota bruta de $180\,\mathrm{MPa}$ y resistencia $K_{\mathrm{mat}}=35\,\mathrm{MPa}\sqrt{\mathrm m}$. Hallar $K_I$ y calcular el tamaño crítico manteniendo $Y(a/W)=\sqrt{\sec(\pi a/W)}$.}
+\apartado{Solución}{Al principio, $a=0.005\,\mathrm m$, $a/W=0.1$:
+\[
+Y=\sqrt{\sec(\pi\,0.1)}=1.0254083,\quad
+K_I=180(1.0254083)\sqrt{\pi(0.005)}
+=23.1329\,\mathrm{MPa}\sqrt{\mathrm m}.
+\]
+No puede usarse $Y$ inicial en el despeje de $a_c$, porque cambia con la grieta. La ecuación a resolver es
+\[
+180\sqrt{\frac{\pi a}{\cos(\pi a/0.050)}}=35.
+\]
+Una bisección para $0.005<a<0.025\,\mathrm m$ da $a_c=0.0098171\,\mathrm m$, o longitud total crítica $2a_c=19.634\,\mathrm{mm}$.}
+\apartado{Comprobación}{Reintroduciendo $a_c$ resulta $K_I=35\,\mathrm{MPa}\sqrt{\mathrm m}$. Se requiere verificar ligamento, espesor, zona plástica y dominio de la fórmula.}
+
+\section{PF04. Grieta de borde con factor polinómico}
+\apartado{Enunciado}{Para grieta de un borde $a=5\,\mathrm{mm}$, placa de ancho $W=50\,\mathrm{mm}$ y $\sigma=100\,\mathrm{MPa}$, calcular $K_I$ con la corrección polinómica de la diapositiva 33; comparar con $Y=1.12$.}
+\apartado{Solución}{Con $x=a/W=0.1$:
+\[
+Y=1.12-0.231x+10.55x^2-21.72x^3+30.39x^4
+=1.183719.
+\]
+Por tanto,
+\[
+K_I=1.183719(100)\sqrt{\pi(0.005)}
+=14.8357\,\mathrm{MPa}\sqrt{\mathrm m}.
+\]
+La aproximación para grieta corta $Y=1.12$ daría aproximadamente $14.037\,\mathrm{MPa}\sqrt{\mathrm m}$.}
+\apartado{Limitaciones}{La geometría de dos grietas opuestas no comparte esta función; no extrapolar el polinomio fuera de su rango.}
+
+\section{PF05. Probeta compacta CT}
+\apartado{Enunciado}{Para probeta CT con $P=4000\,\mathrm N$, $B=12\,\mathrm{mm}$, $W=50\,\mathrm{mm}$ y $a/W=0.4$, hallar $K_I$ con la función geométrica de CT.}
+\apartado{Solución}{La función es:
+\[
+f(x)=\frac{(2+x)(0.886+4.64x-13.32x^2+
+14.72x^3-5.6x^4)}{(1-x)^{3/2}},
+\qquad f(0.4)=7.27873.
+\]
+Así,
+\[
+K_I=\frac{P}{B\sqrt W}f(x)
+=\frac{4000(7.27873)}{0.012\sqrt{0.050}}
+=10.8505\,\mathrm{MPa}\sqrt{\mathrm m}.
+\]}
+\apartado{Verificación}{La dimensión de $P/(B\sqrt W)$ es fuerza por longitud a la potencia $3/2$, equivalente a $\mathrm{Pa}\sqrt{\mathrm m}$. No usar la fórmula CT para una placa o SENB.}
+
+\section{PF06. Espesor no equivale a validez completa}
+\apartado{Enunciado}{Con $K_{IC}=40\,\mathrm{MPa}\sqrt{\mathrm m}$, $\sigma_y=950\,\mathrm{MPa}$, grieta de borde $a=2\,\mathrm{mm}$, factor $Y=1.12$, $B=5\,\mathrm{mm}$ y $W=25\,\mathrm{mm}$, hallar la tensión crítica del modelo y comprobar el cribado de dimensiones.}
+\apartado{Solución}{En la hipótesis de factor constante,
+\[
+\sigma_c=\frac{40}{1.12\sqrt{\pi(0.002)}}=450.56\,\mathrm{MPa}.
+\]
+La escala mínima de cribado es
+\[
+2.5\left(\frac{K_{IC}}{\sigma_y}\right)^2=
+2.5(40/950)^2\,\mathrm m=4.432\,\mathrm{mm}.
+\]
+$B=5\,\mathrm{mm}$ y $W-a=23\,\mathrm{mm}$ superan la escala, pero $a=2\,\mathrm{mm}$ no. Por ello el dato de $K_{IC}$ no ha quedado validado para la geometría completa.}
+\apartado{Interpretación}{La tensión es un cálculo formal sujeto a las hipótesis de tenacidad y MFEL, no una autorización estructural.}
+
+\section{PF07. Diagnóstico conceptual y unidades}
+\apartado{Caso A}{La coalescencia de microcavidades sugiere fractura dúctil. Una trayectoria intergranular no prueba por sí sola corrosión: podría haber precipitados, hidrógeno o mecanismos térmicos.}
+\apartado{Caso B}{Un documento indica $K_{IC}=55\,\mathrm{MPa\,m^{-2}}$: esa unidad es incorrecta. Debe usarse $\mathrm{MPa}\sqrt{\mathrm m}$. Para energía de fractura usar $\mathrm{J/m^2}$.}
+\apartado{Caso C}{Una inspección por penetrantes sin indicaciones no descarta una grieta interna o sellada. Debe documentarse capacidad y cobertura reales.}
+
+\section{Autocorrección rápida}
+\apartado{Pregunta 1}{Grieta central total $6\,\mathrm{mm}$, $Y=1$, $\sigma=140\,\mathrm{MPa}$: $a=0.003\,\mathrm m$ y $K_I=140\sqrt{\pi(0.003)}=13.590\,\mathrm{MPa}\sqrt{\mathrm m}$.}
+\apartado{Pregunta 2}{Para $K_{\mathrm{mat}}=32\,\mathrm{MPa}\sqrt{\mathrm m}$, $Y=1$ y $\sigma=160\,\mathrm{MPa}$: $a_c=(32/160)^2/\pi=0.0127324\,\mathrm m$. Una grieta central tendría longitud crítica total $25.465\,\mathrm{mm}$.}
+\apartado{Pregunta 3}{Para $K_{IC}=50\,\mathrm{MPa}\sqrt{\mathrm m}$ y $\sigma_y=1000\,\mathrm{MPa}$, la escala de espesor $2.5(50/1000)^2\,\mathrm m=6.25\,\mathrm{mm}$; no prueba por sí sola validez del ensayo.}

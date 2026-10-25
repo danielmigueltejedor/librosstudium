@@ -1,0 +1,66 @@
+name: Request complete stable edition
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "release-requests/v*.txt"
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  tag-and-dispatch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate an explicit one-time release request
+        id: request
+        env:
+          COMMIT: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t NEW_REQUESTS < <(git diff --diff-filter=A --name-only "${COMMIT}^" "${COMMIT}" -- release-requests/)
+          if [[ "${#NEW_REQUESTS[@]}" -ne 1 ]]; then
+            echo "::error::Exactly one newly added release request is required."
+            exit 1
+          fi
+          REQUEST="${NEW_REQUESTS[0]}"
+          if [[ ! "$REQUEST" =~ ^release-requests/(v[0-9]+\.[0-9]+\.[0-9]+)\.txt$ ]]; then
+            echo "::error::Invalid release request path: $REQUEST"
+            exit 1
+          fi
+          TAG="${BASH_REMATCH[1]}"
+          if [[ "$(tr -d '\r\n' < "$REQUEST")" != "$TAG" ]]; then
+            echo "::error::Release request must contain its version."
+            exit 1
+          fi
+          if git show-ref --verify --quiet "refs/tags/$TAG"; then
+            echo "::error::Tag already exists."
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+      - name: Create stable tag from reviewed main commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.request.outputs.tag }}
+          COMMIT: ${{ github.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api -X POST "repos/$GITHUB_REPOSITORY/git/refs" \
+            -f ref="refs/tags/$TAG" -f sha="$COMMIT" --silent
+      - name: Dispatch existing full-collection publisher
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.request.outputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh workflow run release-bundle.yml --ref main -f tag="$TAG"
+          echo "Dispatched complete edition publisher for $TAG on $GITHUB_SHA"

@@ -1,0 +1,195 @@
+% Refuerzo original para las diapositivas y el formulario de Materiales (ULE).
+% Los datos de los ejemplos son hipoteticos y no reproducen ejercicios del docente.
+\chapter{Puente entre la teoría y los métodos de examen de Materiales}
+\label{ch:puente-materiales}
+\objetivos{Explicar las particularidades de las presentaciones de Materiales, manejar los gráficos y el formulario, y unir en una única resolución geometría, tensión, fatiga, propagación y fluencia sin confundir un modelo académico con la evidencia de un componente real.}
+
+\section{Ruta de estudio: qué aporta este capítulo}
+Esta ampliación se organiza a partir de los materiales del curso facilitados para la auditoría: Introducción (34 diapositivas), Fatiga (37), Fluencia (27), Degradación ambiental (32), Métodos de control y detección (37), formulario de una página y una hoja de ocho ejercicios. El capítulo docente de fractura no estaba entre las diapositivas de esta remesa: para fractura se siguen los capítulos~\ref{ch:02} y~\ref{ch:03} y los modelos indicados en el formulario, sin afirmar equivalencia página a página con una presentación no recibida. La hoja histórica es material de entrenamiento; los nuevos ejercicios del cuaderno usan datos diferentes y una redacción original.
+
+\begin{table}[htbp]\centering\small
+\caption{Índice de navegación para estudiar sin alternar continuamente entre presentaciones.}\label{tab:puente-ruta}
+\begin{tabular}{p{.29\linewidth}p{.30\linewidth}p{.31\linewidth}}\toprule
+Bloque docente & Explicación de base & Refuerzo específico\\\midrule
+Introducción & Capítulos 1, 7, 9 y 10 & Clasificación, subsistemas y selección\\
+Fractura/entallas y formulario & Capítulos 2 y 3 & Lectura e inversión de curvas $K_t$\\
+Fatiga & Capítulo 4 & Estimaciones S--N, factores, flexión y Goodman\\
+Fluencia & Capítulo 5 & Álabe rotatorio, elasticidad y temperatura\\
+Degradación ambiental & Capítulo 6 & Radiación, desgaste y pares galvánicos\\
+END y SHM & Capítulo 11 & Técnicas complementarias y monitorización\\\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Introducción: aeronaves, componentes y elección de materiales}
+Un \emph{aerostato} se sostiene principalmente por empuje aerostático; un \emph{aerodino}, por fuerzas aerodinámicas. La clasificación por finalidad ---aviación deportiva, comercial o militar, entre otras--- ayuda a entender misiones, ciclos y requisitos, pero no asigna por sí sola un material a una pieza. La elección real pondera densidad, rigidez, resistencia, tenacidad, daño tolerable, temperatura, corrosión, fabricación, inspeccionabilidad y coste durante la vida en servicio.
+
+En una estructura de ala se combinan flexión, cortadura y torsión; los largueros y revestimientos resistentes comparten cargas según su diseño. El fuselaje presurizado presenta esfuerzos de membrana y fatiga por ciclos de presurización; los herrajes y uniones pueden concentrar tensiones. El tren de aterrizaje combina impactos, solicitaciones de flexión y requisitos de tenacidad superficial y volumétrica. En un motor, un disco requiere resistencia centrífuga, fatiga y tenacidad; un álabe caliente añade fluencia, oxidación y estabilidad microestructural. No basta decir «aluminio para alas» o «níquel para turbinas»: se identifican la temperatura, el elemento concreto y los modos de fallo.
+
+\repaso{¿Por qué no es válido elegir el material únicamente por su resistencia a tracción?}{Dos materiales pueden tener igual resistencia y distinta densidad, tenacidad a fractura, comportamiento a fluencia, sensibilidad ambiental y capacidad de inspección. La solución depende de las cargas y de cómo se admite o detecta el daño.}
+
+\section{Concentradores y gráficas del formulario}
+Para una geometría y una definición concretas de tensión nominal,
+\[
+K_t=\frac{\sigma_{\max,\mathrm{el}}}{\sigma_{\mathrm{nom}}},\qquad
+\sigma_{\max,\mathrm{el}}=K_t\sigma_{\mathrm{nom}}.
+\]
+$K_t$ es geométrico y adimensional. No es $K_I$ (intensidad de tensiones en punta de grieta, $\mathrm{MPa}\sqrt{\mathrm m}$) ni $K_f=1+q(K_t-1)$ (factor efectivo de entalla en un modelo de fatiga). En el mismo punto puede requerirse comprobar primero si la multiplicación elástica provoca plasticidad, que invalidaría su interpretación como campo local exacto.
+
+Las tres familias de curvas entregadas en el formulario corresponden a \emph{entallas opuestas}, \emph{cambio de sección con radio de acuerdo} y \emph{orificio circular}. Antes de leer cualquiera: (1) identificar geometría, $h,w,b,r,d$ y el esfuerzo; (2) localizar la curva del cociente correspondiente, por ejemplo $w/h$; (3) calcular la abscisa adimensional, por ejemplo $r/h$; (4) leer/interpolar $K_t$; (5) calcular la tensión nominal con la sección que establece el gráfico, no elegir arbitrariamente área neta o bruta; (6) interpretar la tensión máxima y las hipótesis elásticas.
+
+\subsection{Problema inverso: reducir la tensión concentrada}
+Si la carga y $\sigma_{\rm nom}$ no cambian, una reducción objetivo de $25\,\%$ de la tensión máxima requiere
+\[
+K_{t,\mathrm{nuevo}}=0.75K_{t,\mathrm{inicial}}.
+\]
+Se busca el nuevo $r/h$ en \emph{la misma familia de curvas y el mismo cociente geométrico}, y luego $r=h(r/h)$. Si al modificar el radio también cambian la sección o $h$, debe recalcularse $\sigma_{\rm nom}$: no basta escalar $K_t$.
+
+Para practicar interpolación sin atribuir valores ficticios a la gráfica docente, supóngase una tabla de calibración académica: para $r/h=0.10$, $K_t=2.50$; para $0.25$, $K_t=1.90$; para $0.40$, $K_t=1.60$, en una geometría cuya definición nominal permanece fija. Bajar $25\,\%$ desde $2.50$ exige $K_t=1.875$, situado entre $1.90$ y $1.60$. La interpolación lineal por tramos conduce a
+\[
+\frac rh=0.25+\frac{1.90-1.875}{1.90-1.60}(0.40-0.25)=0.2625.
+\]
+Para $h=20\,\mathrm{mm}$, $r=5.25\,\mathrm{mm}$. Una curva real no es necesariamente lineal; se debe comprobar el error de lectura y el cambio efectivo de geometría.
+
+\section{Formulación útil y límites de las estimaciones a fatiga}
+Para el mismo ciclo se distinguen
+\[
+\sigma_a=\frac{\sigma_{\max}-\sigma_{\min}}2,\quad
+\sigma_m=\frac{\sigma_{\max}+\sigma_{\min}}2,\quad
+R=\frac{\sigma_{\min}}{\sigma_{\max}}.
+\]
+Una carga \emph{invertida} tiene $R=-1$ y $\sigma_m=0$. Si la carga va de cero a un máximo positivo, $R=0$ y $\sigma_a=\sigma_m=\sigma_{\max}/2$. Esta distinción debe preceder a cualquier Goodman o ajuste S--N.
+
+\subsection{Límite experimental, estimación y ambiente}
+El $S'_e$ de una probeta pulida de referencia no es automáticamente el límite de fatiga de la pieza. La diapositiva 19 del tema Fatiga ofrece, \emph{en ausencia de ensayo}, la regla aproximada para ciertos aceros $S'_e\simeq0.5S_{ut}$ si $S_{ut}\leq1400\,\mathrm{MPa}$ y un tope ilustrativo de $700\,\mathrm{MPa}$ por encima. Son convenciones pedagógicas empíricas, no propiedades certificadas de todos los aceros; algunos materiales y ambientes no muestran un límite horizontal de vida infinita.
+
+Las dos desigualdades mostradas en la misma diapositiva para aluminio se solapan ($\sigma_R\leq350$ y $\sigma_R<280\,\mathrm{MPa}$) mientras asignan coeficientes distintos. No se selecciona silenciosamente uno: debe pedirse al docente la corrección o utilizar datos experimentales especificados. Para aluminio, hablar de «vida infinita» sin definir horizonte y espectro puede inducir a error.
+
+La convención de las diapositivas 24--27 usa factores \emph{penalizadores mayores o iguales que uno}:
+\begin{equation}
+S_e=\frac{S'_e}{k_a k_t k_d k_u k_c},\qquad k_i\geq1
+\label{eq:puente-se}
+\end{equation}
+donde $k_a$ recoge proceso/acabado, $k_t$ forma, $k_d$ tamaño, $k_u$ calidad y $k_c$ corrosión \emph{según la definición y calibración concretas del método}. Hay otras bibliografías con factores reductores menores que uno: las dos formas son compatibles únicamente si se transforman los coeficientes. Nunca mezclar tablas de convenciones distintas ni multiplicar una segunda vez por $K_t$ o $K_f$ cuando la penalización geométrica ya está incorporada.
+
+En atmósfera marina, el deterioro puede reducir fuertemente resistencia y eliminar una meseta práctica de fatiga: un $k_c$ de ejercicio no acredita una vida literalmente infinita. Ante una pregunta académica se indica si el profesor permite esa simplificación; ante un componente real se necesitan datos para el material, protección y medio.
+
+\subsection{Construir e invertir el tramo S--N}
+Para un modelo docente que \emph{declara} dos puntos, por ejemplo $(N_1,S_1)=(10^3,0.9S_{ut})$ y $(N_2,S_2)=(10^6,S_e)$, el tramo de Basquin
+\[
+S(N)=A N^b,\quad
+b=\frac{\ln(S_2/S_1)}{\ln(N_2/N_1)},\quad
+A=\frac{S_1}{N_1^b},\quad
+N=N_1\left(\frac{S}{S_1}\right)^{1/b}
+\]
+es válido \emph{solo entre los puntos definidos y con el mismo ciclo de referencia}. Para $N>10^6$ no se extrapola esta recta como prueba de vida infinita. Si el formulario escribe $S=\sigma'_f(2N)^b$, el $2N$ cuenta inversiones y no debe añadirse o quitarse sin calibrar de nuevo el coeficiente.
+
+En régimen de tensión media positiva, el criterio lineal aproximado de Goodman se escribe
+\[
+\frac{\sigma_a}{S_e}+\frac{\sigma_m}{S_{ut}}\leq1,\qquad
+\sigma_{a,\mathrm{adm}}=S_e\left(1-\frac{\sigma_m}{S_{ut}}\right).
+\]
+Se utiliza con amplitud nominal y factores coherentes con la curva de referencia. Deben distinguirse vida a fatiga y criterio de cedencia estática en el máximo de carga.
+
+\subsection{Flexión y tracción combinadas: de la fuerza a la tensión}
+Para un eje circular macizo de diámetro $D$, un voladizo idealizado de brazo $L$ sometido simultáneamente a esfuerzo axial $F$ y momento $M=FL$, con elasticidad lineal y fibras de la misma dirección crítica, da
+\begin{equation}
+A=\frac{\pi D^2}{4},\quad I=\frac{\pi D^4}{64},\quad
+\sigma_{\rm nom,max}= \frac FA+\frac{M(D/2)}I=
+F\left(\frac4{\pi D^2}+\frac{32L}{\pi D^3}\right).
+\label{eq:puente-flexion}
+\end{equation}
+No son intercambiables el momento alrededor de un eje principal, la distancia $c=D/2$, ni el tensor general del enunciado. Si solo existe flexión, se omite la contribución axial; si hay flexión biaxial, se evalúa el punto y dirección geométricos. Después se traduce el intervalo de $F$ a $\sigma_{\min},\sigma_{\max}$, se calcula $\sigma_a$ y $\sigma_m$, y finalmente se aplica la ley de fatiga elegida.
+
+\section{Fractura y propagación con carga mínima compresiva}
+Se verifica \emph{por separado} la estabilidad estática a tensión máxima
+\[
+K_{\max}=Y\sigma_{\max}\sqrt{\pi a}<K_{\mathrm{mat}}
+\]
+y el crecimiento \emph{en el dominio donde se haya calibrado el coeficiente} $da/dN=C(\Delta K)^m$. Si $\sigma_{\min}>0$ y la grieta permanece abierta, se usa habitualmente $\Delta K=Y(\sigma_{\max}-\sigma_{\min})\sqrt{\pi a}$.
+
+Cuando $\sigma_{\min}<0$ una parte del ciclo puede cerrar las caras de la grieta. \emph{No} es general concluir que la compresión propaga una grieta de modo I como una tracción ni que $\Delta K_{\rm nominal}=K_{\max}-K_{\min}$ sea siempre el impulsor efectivo. Según el modelo, se distingue el rango nominal del rango efectivo $\Delta K_{\rm eff}=K_{\max}-K_{\rm op}$, con $K_{\rm op}$ determinado experimentalmente, o se aproxima para un ejercicio de cierre ideal a $Y\sigma_{\max}\sqrt{\pi a}$. Es una \emph{hipótesis adicional}, no una identidad universal. El rango y el factor $Y$ deben quedar explícitos en cada solución.
+
+Para $m=2$ e intensidad proporcional a $\sqrt a$, la integración da
+\[
+N=\frac{\ln(a_f/a_i)}{C\pi(Y\Delta\sigma)^2}.
+\]
+Para $m\ne2$ se usa la integral del capítulo~\ref{ch:04}. En ambos casos, se comprueban las unidades de $C$, que $a_f$ no supera el tamaño crítico a $\sigma_{\max}$ y que el crecimiento no sale del régimen calibrado.
+
+\section{Álabes rotatorios: cálculo de fluencia con el esfuerzo centrífugo}
+Un álabe radial idealizado de sección constante $A$, longitud $L$, densidad $\rho$ y centro de masas a radio $r_{\rm cm}$, gira a $\omega=2\pi n/60$ si $n$ se expresa en rpm. La resultante centrífuga que transmite a la raíz es
+\[
+F_c=\int\rho A\omega^2r\,d\ell
+=\rho AL\omega^2r_{\rm cm},\quad
+\sigma_{\rm raiz}=\frac{F_c}{A}=\rho L\omega^2r_{\rm cm}.
+\]
+En realidad la fuerza interna disminuye hacia la punta y la distribución longitudinal de deformación no es uniforme. Utilizar $\sigma_{\rm raiz}$ como tensión \emph{uniforme equivalente} para todo el álabe es una simplificación de examen y puede ser poco representativa; un cálculo más fino integraría $\varepsilon(\ell)$ a lo largo del radio.
+
+Si se adopta explícitamente ese modelo uniforme con deformación total admisible $\varepsilon_{\lim}=\Delta L_{\lim}/L$, elasticidad inicial y fluencia secundaria casi constante:
+\begin{equation}
+\varepsilon_e=\frac{\sigma_{\rm eq}}E,\quad
+\varepsilon_c=\varepsilon_{\lim}-\varepsilon_e,\quad
+t_{\lim}=\frac{\varepsilon_c}{A_N\sigma_{\rm eq}^n e^{-Q/(R_gT)}}.
+\label{eq:puente-alabe}
+\end{equation}
+Se exige $\varepsilon_c>0$; si no, se habría consumido el margen antes de acumular fluencia. El símbolo $A_N$ es aquí el \emph{prefactor de Norton}, distinto del área $A$. Para comparar dos temperaturas con la misma tensión:
+\[
+\frac{t_2}{t_1}=
+\exp\left[\frac Q{R_g}\left(\frac1{T_2}-\frac1{T_1}\right)\right].
+\]
+La temperatura se expresa en kelvin y la unidad del prefactor determina si $t$ sale en segundos, horas u otra unidad. La expresión es tiempo para \emph{alcanzar una deformación idealizada}, no una predicción automáticamente válida de rotura del álabe.
+
+\section{Degradación que las diapositivas tratan aparte}
+\subsection{Galvanismo, intergranularidad y protección}
+La corrosión galvánica requiere conexión eléctrica, electrolito y cinética electroquímica compatible. La serie galvánica \emph{en agua de mar} de las diapositivas 13--15 es específica de ese ambiente: no es una ordenación universal para cualquier temperatura, aleación o estado pasivo. Además del orden, importa la relación de áreas: un ánodo pequeño conectado a un cátodo grande puede concentrar pérdida local. Aislamiento, drenaje, sellantes, ánodos de sacrificio, anodizado y protección superficial se eligen según material y servicio.
+
+La corrosión intergranular puede aparecer cuando los límites de grano y el interior poseen composiciones o estados electroquímicos distintos, por ejemplo por precipitación y zonas empobrecidas próximas. En aluminio de alta resistencia puede asociarse con exfoliación según microestructura y geometría. No se deduce la polaridad de \emph{todo} precipitado a partir del nombre de la aleación; la denominación y estequiometría de una fase en una diapositiva necesitan validación microestructural específica.
+
+\subsection{Radiación y desgaste}
+Una radiación electromagnética con frecuencia $\nu$ y longitud de onda $\lambda$ tiene energía por fotón $E_\gamma=h\nu=hc/\lambda$: menor longitud de onda implica más energía \emph{por fotón}. La exposición, absorción y mecanismo dominan el daño. En polímeros, UV y otras radiaciones pueden causar rotura de enlaces, reticulación o cambios de color y propiedades; negro de humo y aditivos pueden mejorar la protección cuando están bien formulados. Esto no significa que \emph{cualquier} fotón rompa necesariamente un enlace C--C ni que todos los materiales sufran idéntico mecanismo.
+
+El desgaste \emph{adhesivo} involucra contactos y transferencia de material; el \emph{abrasivo}, asperidades o partículas duras que surcan otra superficie; la \emph{fatiga superficial}, cargas cíclicas de contacto y desprendimiento; la \emph{erosión}, impactos de partículas o fluidos; la \emph{cavitación}, colapsos locales de cavidades; el desgaste \emph{tribocorrosivo} combina acción mecánica y química. Los óxidos desprendidos pueden actuar como abrasivo de tercer cuerpo. Una pérdida por desgaste no es por definición corrosión electroquímica, aunque puedan interactuar.
+
+\section{END complementarios y Structural Health Monitoring (SHM)}
+Además de los END explicados en el capítulo~\ref{ch:11}, una inspección por golpeo (\emph{tap test}) puede revelar cambios locales de respuesta acústica en ciertos laminados o sándwiches; su sensibilidad depende de profundidad, geometría, operador y contraste. Un \emph{C-scan} registra una magnitud ultrasónica sobre una malla bidimensional y sirve para cartografiar indicaciones, pero no transforma cualquier eco en tamaño real de grieta. La tomografía computarizada reconstruye información volumétrica a partir de múltiples proyecciones de atenuación, con limitaciones de resolución, artefactos, espesor y dosis. Ninguno permite certificar ausencia universal de daño.
+
+Un SHM emplea sensores, adquisición, procesamiento, referencia o modelo e interpretación para seguir indicadores de estado estructural. Un sistema \emph{pasivo} registra respuestas de eventos o cargas de servicio; uno \emph{activo} excita la estructura mediante actuadores y analiza la respuesta. \emph{Local} y \emph{global} describen cobertura, no equivalen a pasivo y activo. La instrumentación y la conectividad reales dependen de arquitectura, certificación y producto: no se asegura que todos los SHM escriban en el registrador de vuelo, detecten todos los impactos ni habiliten por sí solos menores factores de seguridad.
+
+\subsection{Redes de Bragg en fibra óptica}
+En una red de Bragg (FBG) la longitud de onda reflejada de referencia satisface $\lambda_B=2n_{\rm eff}\Lambda$, con índice efectivo $n_{\rm eff}$ y período de rejilla $\Lambda$. Una deformación cambia la respuesta, pero también lo hace la temperatura:
+\[
+\frac{\Delta\lambda_B}{\lambda_B}\simeq(1-p_e)\varepsilon+
+(\alpha_{\rm fibra}+\xi)\Delta T.
+\]
+La expresión simplificada separa contribución fotoelástica $p_e$, expansión y sensibilidad termoóptica $\xi$. Se necesita compensación térmica y calibración de la instalación; medir $\Delta\lambda_B$ no identifica por sí solo una grieta.
+
+\subsection{CVM y piezoeléctricos}
+En \emph{Comparative Vacuum Monitoring} (CVM), una red sellada de canales adherida a la superficie se monitoriza por diferencias de presión o pérdida de estanqueidad. La apertura de una fisura que intersecta el recorrido adecuado puede producir una señal. La adhesión, zona cubierta, estanqueidad previa y umbral del sistema condicionan sensibilidad y falsos avisos. No se extrapola la ausencia de señal a todo el elemento.
+
+En redes piezoeléctricas activas, un transductor excita ondas y otros registran la respuesta. Variaciones en amplitud, fase, tiempo de llegada o espectro respecto a una referencia pueden ser compatibles con daño, pero también con temperatura, cargas y cambios de acoplamiento. La localización y clasificación requieren algoritmos, calibración y evidencia. En operación, SHM complementa la inspección tradicional, no sustituye sin validación los procedimientos aprobados.
+
+\begin{table}[htbp]\centering\small
+\caption{Elección de técnicas en preguntas cortas.}\label{tab:puente-shm}
+\begin{tabular}{p{.19\linewidth}p{.31\linewidth}p{.37\linewidth}}\toprule
+Método & Variable/indicio & Precaución principal\\\midrule
+FBG & Variación de longitud de onda & Compensar temperatura; deformación no equivale a fisura\\
+CVM & Pérdida de diferencial de presión & Cobertura del canal, adhesión y estanqueidad\\
+Piezoeléctrico & Cambio de respuesta guiada/vibratoria & Referencia, uniones, excitación y temperatura\\
+C-scan & Mapa de ecos ultrasónicos & Orientación, acoplamiento y umbral\\
+Tomografía & Atenuación en múltiples proyecciones & Artefactos, resolución y radioprotección\\
+Tap test & Cambio de sonido/respuesta local & Subjetividad y poca garantía a profundidad\\\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Autocomprobación antes de cerrar el estudio}
+\begin{enumerate}
+\item Distinguir $K_t$, $K_f$, $K_I$ y $K_{IC}$ por significado y unidades.
+\item Resolver la reducción de tensión de una entalla \emph{invirtiendo} una curva geométrica y explicando área nominal.
+\item Construir S--N entre $10^3$ y $10^6$ ciclos, aplicar factores según su convención y convertir $R=-1$ a $R=0$ con Goodman.
+\item Convertir fuerza combinada en tensión local; no contar dos veces el factor geométrico.
+\item Resolver Paris y revisar el significado de compresión, cierre, $K_{\max}$ y tamaño final.
+\item Calcular fuerza centrífuga, deformación elástica y tiempo de fluencia usando unidades coherentes.
+\item Diferenciar radiación, erosión, desgaste y corrosión; seleccionar protección justificadamente.
+\item Explicar SHM activo/pasivo, local/global, FBG, CVM, piezoeléctricos y las limitaciones de END.
+\end{enumerate}
+\resumen{La meta no es memorizar una única fórmula por pregunta, sino reconocer el modelo, verificar sus condiciones y justificar la decisión. El capítulo del profesor que no ha sido facilitado no puede darse por auditado; no se garantiza cobertura literal de exámenes futuros.}
+\fuentes{Presentaciones docentes facilitadas: Introducción pp. 1--34; Fatiga pp. 18--28; Fluencia pp. 1--27; Degradación pp. 12--29; Métodos de control pp. 27--34; formulario de Materiales (1 p.). Contraste de fundamentos: Roylance, \textit{Fatigue} y \textit{Introduction to Fracture Mechanics} \cite{MIT-FAT,MIT-FRAC}; FAA--General, métodos de inspección \cite{FAA-G}. Las interpolaciones y ejemplos inventados se presentan como derivaciones, no como datos de la ULE.}

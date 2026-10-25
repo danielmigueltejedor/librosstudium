@@ -2,17 +2,18 @@
 
 ## Alcance y estado
 
-Contraste de los materiales **facilitados en esta conversación**: 5 presentaciones del docente (Introducción: 34 pp.; Fatiga: 37; Fluencia: 27; Degradación: 32; END y SHM: 37), formulario 2025V1 (1 p.) y Problemas 1 (3 pp., 8 ejercicios). Esta comparación complementa auditorías anteriores, pero no prueba que se hayan recibido todas las diapositivas del curso. **No se ha aportado la presentación de fractura (capítulo 2 de la secuencia docente)**. Tampoco se ha recibido un examen futuro ni se garantiza un 10. Los ejemplos son originales y emplean datos académicos inventados.
+Contraste de los materiales **facilitados en esta conversación**: 6 presentaciones del docente (Introducción: 34 pp.; Mecánica de fractura: 46; Fatiga: 37; Fluencia: 27; Degradación: 32; END y SHM: 37), formulario 2025V1 (1 p.) y Problemas 1 (3 pp., 8 ejercicios). Esta comparación complementa auditorías anteriores, pero no prueba que se hayan recibido todas las diapositivas del curso. La presentación completa de fractura se aportó después del primer contraste, y ahora está analizada específicamente en `reports/fractura-docente-2026-10-25.md`. Tampoco se ha recibido un examen futuro ni se garantiza un 10. Los ejemplos son originales y emplean datos académicos inventados.
 
 ## Archivos y cobertura
 
-- Manual: `content/refuerzo-docente-materiales.tex`, integrado desde `main.tex`.
-- Cuaderno: `content/problemas-puente-profesor.tex`, integrado desde `problemas.tex` y persistido en `scripts/build_companions.py`.
-- Pruebas de regresión numérica: `tests/test_matmo_teaching_bridge.py`.
+- Manual: `content/refuerzo-docente-materiales.tex` y `content/fractura-docente-complemento.tex`, integrados desde `main.tex`.
+- Cuaderno: `content/problemas-puente-profesor.tex` y `content/fractura-problemas-docentes.tex`, integrados desde `problemas.tex` y persistidos en `scripts/build_companions.py`.
+- Pruebas de regresión numérica: `tests/test_matmo_teaching_bridge.py` y `tests/test_matmo_fracture_slides.py`.
 
 | Fuente del profesor | Aspectos reforzados | Problemas nuevos |
 |---|---|---|
 | Introducción, pp. 2–34 | Aerostatos/aerodinos, estructuras, propulsores, selección por misión y fallo | Preguntas conceptuales en manual |
+| Fractura, pp. 4–43 | Clivaje, dúctil-frágil, Inglis, Griffith, campos de punta, geometrías y cribado de validez | PF01–PF07, autocorrección |
 | Fatiga, pp. 18–28 | Estimación en aceros, **contradicción detectada** para aluminio, S–N, correctores (k_a,k_t,k_d,k_u,k_c), tensiones medias, flexión | PM02, PM03, simulacro |
 | Fluencia, pp. 4–24 | Norton, temperatura, tensión centrífuga en álabe, deformación elástica y acumulada | PM05, simulacro |
 | Degradación, pp. 12–29 | Series galvánicas dependientes de medio, intergranularidad, radiación, desgaste y prevención | PM08 |

@@ -19,6 +19,12 @@ Se añade `content/profundizacion-aplicada.tex` al manual con derivaciones, cuat
 
 La matriz de cambios, hipótesis y fuentes está en `reports/ampliacion-avanzada-2026-10-24.md`. Esta edición requiere CI, revisión visual de los PDF y revisión científica externa antes de publicación; la release r2 permanece sin cambios.
 
+## Refuerzo docente integrado (25 de octubre de 2026)
+
+El manual incluye `content/refuerzo-docente-materiales.tex`: un capítulo nuevo sobre gráficas de concentración de tensiones, construcción y correcciones de S--N, flexión, Goodman, Paris con compresión, fluencia de álabes, radiación, desgaste, C-scan, tomografía y SHM (FBG, CVM y piezoeléctricos). El cuaderno añade `content/problemas-puente-profesor.tex` con **8 problemas originales PM01--PM08** y un simulacro de autocorrección de cinco apartados. Estos apartados se cargan en `main.tex` y `problemas.tex`, y el generador `scripts/build_companions.py` conserva el nuevo cuaderno complementario.
+
+La matriz de correspondencias con las cinco presentaciones, la hoja de problemas y el formulario, junto con contradicciones docentes y pruebas pendientes, está en `reports/refuerzo-docente-2026-10-25.md`. Las pruebas aritméticas independientes están en `tests/test_matmo_teaching_bridge.py`. El capítulo de diapositivas sobre fractura **no** formaba parte de los archivos proporcionados en esta revisión; no se declara una correspondencia completa con ese tema. El objetivo es permitir preparar resultados excelentes **sin garantizar una nota ni cobertura de preguntas futuras**. Sigue vigente el estado **EN REVISIÓN** hasta pasar compilación, auditoría matemática y revisión externa.
+
 ## Editar y compilar
 
 Se puede abrir esta carpeta en el editor LaTeX de Codex, con `main.tex` como documento principal. También puede usarse una instalación de TeX Live con `latexmk` y pdfLaTeX:

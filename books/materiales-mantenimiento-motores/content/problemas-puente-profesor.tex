@@ -1,0 +1,160 @@
+% Problemas originales puente con la hoja de Materiales ULE: no reproducen enunciados docentes.
+\part{Preparación intensiva de Materiales}
+\chapter{Problemas integrados según los métodos de clase}
+\label{ch:problemas-puente}
+Este capítulo se utiliza \emph{después} del capítulo de refuerzo dirigido del manual y de los problemas P01--P35. Todos los datos son hipotéticos y se han cambiado respecto de las hojas docentes. Se dan enunciado, hipótesis, planteamiento, cálculo, comprobación y límites. En un examen deben utilizarse los factores, gráficas y convenciones realmente especificados por su enunciado y el formulario.
+
+\section{PM01. Invertir la curva de concentración de tensiones}
+\apartado{Enunciado}{Una pieza tiene $h=20\,\mathrm{mm}$ y $\sigma_{\mathrm{nom}}=120\,\mathrm{MPa}$. Una tabla \emph{académica ficticia} para su misma familia geométrica proporciona $(r/h,K_t)=(0.10,2.50),(0.25,1.90),(0.40,1.60)$. En la configuración inicial $r/h=0.10$. Hallar la tensión local y el radio nuevo para reducir el máximo elástico un $25\,\%$, suponiendo que la tensión nominal no cambia.}
+\apartado{Hipótesis}{Elasticidad lineal, sin plastificación, relación geométrica adicional fija y aproximación por interpolación lineal en el tramo de tabla. No son puntos digitalizados de las curvas del profesor.}
+\apartado{Solución}{La tensión inicial es $2.50(120)=300\,\mathrm{MPa}$ y la nueva debe ser $0.75(300)=225\,\mathrm{MPa}$. El factor objetivo es $K_{t,n}=225/120=1.875$. Interpolando entre $(0.25,1.90)$ y $(0.40,1.60)$:
+\[
+(r/h)_n=0.25+\frac{1.90-1.875}{1.90-1.60}(0.40-0.25)=0.2625,\quad
+r_n=5.25\,\mathrm{mm}.
+\]
+El radio inicial era $2.00\,\mathrm{mm}$. La reducción del máximo es $(300-225)/300=25\,\%$.}
+\apartado{Advertencia de examen}{Si al aumentar $r$ cambian $h$, la sección neta, el cociente $w/h$ o la tensión nominal, hay que reevaluar todo el problema. Una lectura de gráfica real requiere describir incertidumbre y no atribuir precisión de centésimas de milímetro al dibujo.}
+
+\section{PM02. Construir una S--N a partir de dos puntos declarados}
+\apartado{Enunciado}{En un ejercicio docente hipotético se da un acero con $S_{ut}=800\,\mathrm{MPa}$. Se \emph{adopta} la aproximación $S'_e=0.5S_{ut}$ y los puntos de referencia $(10^3,0.9S_{ut})$ y $(10^6,S'_e)$, con tensión media cero y sin otros factores. Hallar la amplitud para $10^4$ ciclos y los ciclos para una amplitud de $500\,\mathrm{MPa}$.}
+\apartado{Modelo e hipótesis}{Ley $S=AN^b$ únicamente para $10^3\leq N\leq10^6$; puntos impuestos, no medidos; $N$ representa ciclos y no inversiones.}
+\apartado{Solución}{Los dos valores son $S_1=720$ y $S_2=400\,\mathrm{MPa}$:
+\[
+b=\frac{\ln(400/720)}{\ln(10^6/10^3)}=-0.0850908,\qquad
+S(N)=720\left(\frac{N}{10^3}\right)^b.
+\]
+Por tanto,
+\[
+S(10^4)=720(10)^{-0.0850908}=591.89\,\mathrm{MPa}.
+\]
+Invirtiendo,
+\[
+N(500)=10^3(500/720)^{1/b}\simeq 7.263\times10^4\ \mathrm{ciclos}.
+\]
+Comprobación: $400<500<720$ y $10^3<N<10^6$; la vida aumenta al bajar la amplitud.}
+\apartado{Límite}{Una curva estimada con dos puntos no demuestra una resistencia a $10^7$ ciclos ni reproduce dispersión, grietas, procesos de fabricación o ambiente. Si se utiliza Basquin en inversiones $(2N)^b$, hay que transformar/calibrar coeficientes, no poner $2N$ en esta recta por costumbre.}
+
+\section{PM03. Carga axial, flexión, corrosión y Goodman en una sola pieza}
+\apartado{Enunciado}{Se idealiza un componente circular de $D=20\,\mathrm{mm}$, brazo $L=100\,\mathrm{mm}$ y una fuerza $F$ que produce simultáneamente esfuerzo axial y momento $M=FL$ en la sección crítica. En un \emph{modelo empírico de clase} se adoptan $S_{ut}=800\,\mathrm{MPa}$, $S'_e=400\,\mathrm{MPa}$ y coeficientes penalizadores $k_a=1.15$, $k_t=1.25$, $k_d=1.08$, $k_u=1.05$, $k_c=1.20$. Hallar la amplitud de fuerza límite para carga completamente invertida y el máximo de fuerza para carga repetida de 0 a $F_{\max}$ usando Goodman.}
+\apartado{Hipótesis}{El coeficiente de forma $k_t$ ya está incluido en la reducción de $S_e$ y \emph{no} vuelve a multiplicarse en la tensión local; régimen elástico; se ignora cortadura y se supone que las contribuciones de tracción y flexión tienen el mismo signo en la fibra crítica. Los factores son datos inventados y se interpretan solo bajo esta convención.}
+\apartado{Paso 1: geometría}{Con $A=\pi D^2/4$ e $I=\pi D^4/64$:
+\[
+\sigma(F)=F\left(\frac4{\pi D^2}+\frac{32L}{\pi D^3}\right)
+=F(130507.05\,\mathrm{m^{-2}}).
+\]
+Si $F=1000\,\mathrm N$, la tensión nominal crítica es $130.507\,\mathrm{MPa}$. La dimensión de la constante es inverso de área.}
+\apartado{Paso 2: factores}{En la convención penalizadora de las diapositivas:
+\[
+S_e=\frac{400}{1.15(1.25)(1.08)(1.05)(1.20)}
+=204.483\,\mathrm{MPa}.
+\]}
+\apartado{Paso 3: carga invertida}{Con $R=-1$, $\sigma_m=0$, $\sigma_a=\sigma(F_a)$ y el límite idealizado de Goodman se reduce a $\sigma_a=S_e$. Resulta
+\[
+F_a=\frac{204.483\times10^6}{130507.05}=1566.84\,\mathrm N.
+\]}
+\apartado{Paso 4: carga repetida}{Para $R=0$, $\sigma_a=\sigma_m=\sigma(F_{\max})/2$ y
+\[
+\frac{\sigma(F_{\max})/2}{S_e}+
+\frac{\sigma(F_{\max})/2}{S_{ut}}=1
+\quad\Longrightarrow\quad
+\sigma(F_{\max})=\frac{2S_eS_{ut}}{S_e+S_{ut}}
+=325.71\,\mathrm{MPa}.
+\]
+Así, $F_{\max}=2495.75\,\mathrm N$. La fuerza máxima es superior a la amplitud del caso invertido porque el rango cíclico para $R=0$ es distinto; no debe compararse $F_{\max}$ con $F_a$ como si representaran el mismo ciclo.}
+\apartado{Verificación y límites}{$S_e<S'_e$ por penalización; las fórmulas conservan unidades. En ambiente corrosivo real podría no existir límite de vida infinita ni ser válido el $k_c$ constante. Para una pieza real faltarían cedencia, geometría tridimensional, historia de cargas, datos experimentales, protección y factores de seguridad.}
+
+\section{PM04. Paris con tres mínimos de carga}
+\apartado{Enunciado}{Para una grieta pasante con $Y=1$, $a_i=1\,\mathrm{mm}$, $a_f=4\,\mathrm{mm}$, $\sigma_{\max}=150\,\mathrm{MPa}$, $K_{\mathrm{mat}}=35\,\mathrm{MPa}\sqrt{\mathrm m}$ y $da/dN=C(\Delta K)^2$, se adopta $C=10^{-11}\,\mathrm{m\,ciclo^{-1}}/(\mathrm{MPa}\sqrt{\mathrm m})^2$. Comparar $\sigma_{\min}=0$, $60$ y $-40\,\mathrm{MPa}$; en el caso negativo discutir el cierre en vez de asumir que todo rango nominal es efectivo.}
+\apartado{Hipótesis}{MFEL, grieta larga, parámetros constantes, misma geometría, intervalo completamente dentro del régimen de Paris. Los dos primeros casos mantienen la grieta abierta.}
+\apartado{Tamaño final y estabilidad}{Al final:
+\[
+K_{\max}=150\sqrt{\pi(0.004)}=16.815\,\mathrm{MPa}\sqrt{\mathrm m}
+<35\,\mathrm{MPa}\sqrt{\mathrm m}.
+\]
+El tamaño crítico ideal $a_c=(35/150)^2/\pi=0.01733\,\mathrm m$ es mayor que $a_f$. Esto \emph{no} demuestra vida total desde pieza sana, detectabilidad ni validez universal del coeficiente $C$.}
+\apartado{Integración}{Con $m=2$ se integra $da/a=C\pi(\Delta\sigma)^2\,dN$ y se obtiene
+\[
+N=\frac{\ln(4)}{10^{-11}\pi(\Delta\sigma)^2}.
+\]
+Para $\sigma_{\min}=0$, $\Delta\sigma=150\,\mathrm{MPa}$ y $N=1.9612\times10^6$ ciclos. Para $\sigma_{\min}=60\,\mathrm{MPa}$, $\Delta\sigma=90\,\mathrm{MPa}$ y $N=5.4478\times10^6$ ciclos. Menor rango a igual máximo implica crecimiento más lento en este modelo.}
+\apartado{Caso compresivo y honestidad física}{Si se calcula \emph{solo el rango nominal} para $\sigma_{\min}=-40\,\mathrm{MPa}$, $\Delta\sigma_{\rm nominal}=190\,\mathrm{MPa}$ y la sustitución algebraica daría $N_{\rm nominal}=1.2224\times10^6$ ciclos. Sin embargo, cuando las caras se cierran, el $K_{\min}$ formal negativo no representa apertura de modo I. Bajo un \emph{modelo adicional idealizado} de apertura durante la semionda traccionada, se podría utilizar $\Delta\sigma_{\rm eff}\simeq150\,\mathrm{MPa}$, obteniéndose $1.9612\times10^6$ ciclos. No se presenta esta aproximación como verdad universal: el resultado válido depende del cierre y de cómo se calibró $C$.}
+\apartado{Verificación}{Los valores de vida son positivos, y para $m=2$ escalan exactamente con $1/(\Delta\sigma)^2$. La unidad de $C$ es imprescindible para que $N$ quede expresado en ciclos.}
+
+\section{PM05. Álabe de turbina: fuerza centrífuga, margen y temperatura}
+\apartado{Enunciado}{Álabe ideal de longitud $L=80\,\mathrm{mm}$, densidad $\rho=8500\,\mathrm{kg/m^3}$, sección constante $A=80\,\mathrm{mm^2}$, radio del centro de masas $r_{\rm cm}=170\,\mathrm{mm}$ y $n=9000\,\mathrm{rpm}$. Se toma $E=200\,\mathrm{GPa}$ y elongación total permisible $0.16\,\mathrm{mm}$. A $T_1=1000\,\mathrm K$ la tasa secundaria \emph{hipotética a esa tensión} es $10^{-8}\,\mathrm{s^{-1}}$; la activación tiene $Q=200\,\mathrm{kJ/mol}$. Calcular el tiempo en este modelo y el nuevo tiempo a $T_2=990\,\mathrm K$, manteniendo las demás hipótesis.}
+\apartado{Modelo}{Para simplificar, la tensión resultante en la raíz se utiliza como tensión equivalente uniforme del álabe. En un álabe real la tensión varía con el radio y la deformación total se integraría espacialmente; tampoco se incluyen fluencia primaria/terciaria ni cambios de microestructura.}
+\apartado{Resultante y tensión}{Con $\omega=2\pi(9000)/60=942.478\,\mathrm{rad/s}$,
+\[
+F_c=\rho AL\omega^2r_{\rm cm},\qquad
+\sigma_{\rm eq}=\rho L\omega^2r_{\rm cm}=102.683\,\mathrm{MPa}.
+\]
+La sección se cancela en la tensión para la idealización de sección constante.}
+\apartado{Margen deformacional}{$\varepsilon_{\lim}=0.16/80=0.002$, mientras que
+\[
+\varepsilon_e=\frac{102.683}{200000}=0.000513417,\qquad
+\varepsilon_{c,\max}=0.002-\varepsilon_e=0.001486583.
+\]}
+\apartado{Tiempo a 1000 K}{A la tasa especificada:
+\[
+t_1=\frac{0.001486583}{10^{-8}}=
+1.48658\times10^5\,\mathrm s\simeq41.29\,\mathrm h.
+\]
+Se han convertido correctamente milímetros a la misma unidad al calcular las deformaciones y segundos a horas al expresar el resultado.}
+\apartado{Comparación térmica}{Con $R_g=8.314462618\,\mathrm{J/(mol\,K)}$,
+\[
+\frac{t_2}{t_1}=\exp\left[\frac{200000}{8.314462618}
+\left(\frac1{990}-\frac1{1000}\right)\right]=1.27504,
+\quad t_2\simeq52.65\,\mathrm h.
+\]
+Bajar diez kelvin reduce la tasa y aumenta el tiempo en el mismo mecanismo. Si el prefactor estuviese calibrado en $\mathrm{h^{-1}}$, se calcularía directamente en horas; no se multiplicaría por $3600$ de nuevo.}
+\apartado{Verificación y límites}{Al sumar $\varepsilon_e+\dot\varepsilon_s t_1$ se recupera $\varepsilon_{\lim}=0.002$. Los datos no representan prestaciones de un álabe comercial ni vida a rotura; el esfuerzo real y la historia térmica no se han caracterizado.}
+
+\section{PM06. Fractura y tamaño característico de ensayo}
+\apartado{Enunciado}{En un diseño idealizado con $\sigma=(2/3)\sigma_y$, $Y=1$ y grieta pasante central de longitud total $2a$, comparar dos estados ficticios: A con $\sigma_y=1000\,\mathrm{MPa}$, $K_{IC}=60\,\mathrm{MPa}\sqrt{\mathrm m}$; B con $\sigma_y=1600\,\mathrm{MPa}$, $K_{IC}=50\,\mathrm{MPa}\sqrt{\mathrm m}$. Encontrar semilongitud crítica y el tamaño de cribado de deformación plana para un espesor de $10\,\mathrm{mm}$.}
+\apartado{Solución}{Para A, $\sigma_A=666.67\,\mathrm{MPa}$,
+\[
+a_{c,A}=\frac1\pi(60/666.67)^2\simeq2.578\,\mathrm{mm}.
+\]
+Para B, $\sigma_B=1066.67\,\mathrm{MPa}$,
+\[
+a_{c,B}=\frac1\pi(50/1066.67)^2\simeq0.6994\,\mathrm{mm}.
+\]
+Las longitudes \emph{totales} de grieta central son $2a_c$, respectivamente $5.156$ y $1.399\,\mathrm{mm}$. El cribado $2.5(K_{IC}/\sigma_y)^2$ exige como escala $9.000\,\mathrm{mm}$ para A y $2.441\,\mathrm{mm}$ para B. El espesor de $10\,\mathrm{mm}$ supera ambas escalas, pero \emph{los tamaños críticos calculados} ($2.578$ y $0.6994\,\mathrm{mm}$) son inferiores a las escalas de $9.000$ y $2.441\,\mathrm{mm}$ exigibles a la dimensión de grieta en ese cribado: no puede concluirse que la condición completa de deformación plana esté demostrada. Además faltan ligamento, geometría normalizada y restantes requisitos del ensayo/MFEL.}
+\apartado{Comprobación}{$a_c\propto K_{IC}^2/\sigma^2$. El material más resistente de la pareja puede tener una grieta crítica menor, de acuerdo con la menor tenacidad adoptada y la mayor tensión de diseño. La comparación no decide por sí sola qué material conviene.}
+
+\section{PM07. Preguntas de técnica de inspección y SHM}
+\apartado{Situación A}{Se pretende inspeccionar una delaminación en el interior de un panel compuesto no transparente, con acceso por una cara.}
+\apartado{Respuesta}{Los penetrantes y partículas magnéticas no caracterizan universalmente esa discontinuidad interna. Se evalúan ultrasonidos, C-scan o termografía activa en función de material, espesor, acceso, contraste y procedimiento. Una imagen de C-scan es un mapa de respuesta acústica, no un mapa automáticamente exacto de dimensiones reales.}
+\apartado{Situación B}{Se desea registrar cambios de deformación en una zona de ala usando fibra óptica y redes de Bragg.}
+\apartado{Respuesta}{La variable primaria es el desplazamiento de longitud de onda reflejada; se relaciona con deformación, temperatura y calibración. El desplazamiento aislado no demuestra presencia de fisura. Se compensan efectos térmicos y se contrasta contra referencia/modelo.}
+\apartado{Situación C}{Un sensor adherido detecta fuga entre canales vecinos y otro sistema activa una onda guiada para analizar respuestas a distancia.}
+\apartado{Respuesta}{El primero puede corresponder a CVM, de alcance condicionado a la red de canales y su estanqueidad. El segundo corresponde a un SHM activo piezoeléctrico, cuya respuesta depende también de temperatura, acoplamiento y excitación. Local/global es una clasificación diferente de activo/pasivo.}
+\apartado{Situación D}{Se recibe una radiografía sin indicaciones y se afirma ausencia de toda grieta en el componente.}
+\apartado{Respuesta}{La conclusión no es admisible: la radiografía integra atenuación y su sensibilidad depende de orientación, espesor, contraste, técnica, cobertura y criterio. Se describe lo que el procedimiento puede detectar, no lo que no ha sido demostrado.}
+
+\section{PM08. Casos de degradación: seleccionar mecanismo y protección}
+\apartado{Caso A}{Una unión metálica reúne dos aleaciones de distinta nobleza bajo película salina; el elemento anódico expuesto es pequeño y el cátodo grande.}
+\apartado{Respuesta}{La densidad de corriente anódica puede concentrarse y causar ataque localizado. Se considera par galvánico, humedad, estado superficial y polarización; se estudian aislamiento, sellantes, drenaje y protección compatible. Una serie galvánica de agua marina no se traslada directamente a otro fluido.}
+\apartado{Caso B}{Un polímero pierde propiedades tras exposición UV; otro componente pierde espesor por impactos repetidos de partículas duras.}
+\apartado{Respuesta}{El primero apunta a degradación fotoquímica compatible con cambios moleculares inducidos por radiación. El segundo, a erosión/desgaste por partículas; son mecanismos distintos de la pila electroquímica. Distinguir energía del fotón $hc/\lambda$ de dosis y absorbancia.}
+\apartado{Caso C}{Se observan microgrietas en una pista sometida a rodadura y formación de fragmentos que actúan como abrasivo.}
+\apartado{Respuesta}{Puede intervenir fatiga superficial con abrasión de tercer cuerpo. La combinación de mecanismos no autoriza atribuir toda pérdida a corrosión sin evidencia adicional.}
+
+\chapter{Simulacro puente de autocorrección}
+\label{ch:simulacro-puente}
+\noindent\textbf{Orientación de estudio, no examen oficial.} Resolver sin mirar las soluciones anteriores. Cada apartado vale 2 puntos: 1 por selección del modelo y sus hipótesis, 0.7 por desarrollo/unidades y 0.3 por comprobación o limitación. Tiempo sugerido: 80 minutos.
+\begin{enumerate}
+\item Una tabla ficticia da $K_t=2.2$ con radio $2\,\mathrm{mm}$ y $K_t=1.6$ con radio $6\,\mathrm{mm}$ a geometría restante fija. Para $\sigma_{\rm nom}=100\,\mathrm{MPa}$, estimar por interpolación el radio necesario para dejar la tensión local en $180\,\mathrm{MPa}$.
+\item Con dos puntos ficticios S--N $(10^3,700\,\mathrm{MPa})$ y $(10^6,350\,\mathrm{MPa})$, calcular $b$ y la tensión a $10^5$ ciclos; explicar por qué no extrapolar al infinito.
+\item Calcular $a_c$ con $K_{\mathrm{mat}}=30\,\mathrm{MPa}\sqrt{\mathrm m}$, $Y=1$ y $\sigma_{\max}=180\,\mathrm{MPa}$; decir si corresponde a semilongitud para grieta central de longitud $2a$.
+\item Para un álabe uniforme equivalente, $\varepsilon_{\lim}=0.0015$, $\sigma=120\,\mathrm{MPa}$, $E=200\,\mathrm{GPa}$ y $\dot\varepsilon=10^{-8}\,\mathrm{s^{-1}}$, hallar el tiempo hasta el límite \emph{de deformación}.
+\item Elegir entre FBG, CVM, piezoeléctricos y ultrasonidos C-scan la técnica más asociada a: cambio de longitud de onda, pérdida de estanqueidad, excitación por ondas y mapa de ecos; citar al menos un factor perturbador por sistema.
+\end{enumerate}
+\section*{Resultados para autocorrección}
+\begin{enumerate}
+\item $K_{t,\mathrm{objetivo}}=180/100=1.8$; entre radios 2 y 6 mm se obtiene $r=2+(2.2-1.8)(6-2)/(2.2-1.6)=4.667\,\mathrm{mm}$. La interpolación es solo del gráfico hipotético.
+\item $b=\ln(350/700)/\ln(1000)=-0.1003433$. $S(10^5)=700(10^5/10^3)^b=440.97\,\mathrm{MPa}$. No acredita meseta de fatiga ni extrapolación experimental.
+\item $a_c=(30/180)^2/\pi=0.008842\,\mathrm m=8.842\,\mathrm{mm}$. Para grieta central $2a_c=17.684\,\mathrm{mm}$; se requiere verificar tenacidad y espesor.
+\item $\varepsilon_e=120/200000=0.0006$; $\varepsilon_c=0.0009$; $t=90000\,\mathrm s=25\,\mathrm h$. No es una vida a rotura.
+\item FBG: longitud de onda, perturbada por temperatura. CVM: estanqueidad/presión, afectada por adhesión y fugas. Piezoeléctricos activos: excitación/recepción, afectados por temperatura o acoplamiento. C-scan: mapa ultrasónico, dependiente de acoplamiento y orientación.
+\end{enumerate}

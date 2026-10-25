@@ -80,7 +80,7 @@ s+=r'\part{Casos de mantenimiento y normativa}\chapter{Situaciones académicas r
 for c in C:
  s+=r'\Needspace{.36\textheight}'+r'\section{'+c['key']+'. '+c['title']+'}\n'
  for title,key in [('Situación inicial','situation'),('Documentación disponible','docs'),('Fecha de referencia','date'),('Normativa y alcance','norm'),('Procedimiento y justificación','analysis'),('Resultado académico','result'),('Limitaciones','limits')]:s+=a(title,c[key])
-s+=r'\input{content/problemas-puente-profesor.tex}'+'\n'+r'\end{document}'
+s+=r'\input{content/problemas-puente-profesor.tex}'+'\n'+r'\input{content/fractura-problemas-docentes.tex}'+'\n'+r'\end{document}'
 (R/'problemas.tex').write_text(s)
 s=header+r'\portada{AUTOEVALUACIÓN}{SIMULACROS\\DE EXAMEN}{Materiales · Mantenimiento · Evaluación combinada\\Seis pruebas originales con soluciones razonadas}'+'\n'+intro
 s+=r'''\chapter*{Reglas de autoevaluación}\addcontentsline{toc}{chapter}{Reglas de autoevaluación}

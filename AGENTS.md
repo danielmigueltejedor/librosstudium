@@ -165,3 +165,13 @@ de fuentes, `SHA256SUMS.txt` y `RELEASE.json` con commit exacto. El hecho de
 publicar una versión estable del bundle no declara certificación académica:
 se mantienen todas las revisiones científicas pendientes y el inventario de
 entrega no es un release manifest académico.
+
+## Repository-specific deterministic quality contract (2026-10-26)
+
+**Project:** Python + LaTeX publishing repository with academic book audit and reproducible release bundle.
+
+**Engineering requirements:** Protect dimensional correctness, source citations, derivations, cross-references and tagged edition bundles; never suppress academic checks or fabricate PDF results.
+
+**Verification commands:** python -m unittest discover -s tests -v; aerobooks check <slug> --strict; aerobooks-ai coverage <slug> --strict; existing release bundle workflows.
+
+Execute applicable checks before claiming completion and report the output honestly. Tests must cover behavior, edge cases and failures. Never delete, skip or weaken tests, quality thresholds or CI for a green result. Review changes to policies, `AGENTS.md`, `QUALITY_GATES.md` and workflows. Make `quality` required in protected branches. Report missing dependencies and failing legacy tests, never hide them. These instructions extend (do not replace) existing rules.
